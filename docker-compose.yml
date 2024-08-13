@@ -1,0 +1,21 @@
+version: '3'
+services:
+  pdf-express:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pdf-express
+    container_name: pdf-express
+    ports:
+      - '5173:5173'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 200M
+        reservations:
+          cpus: '0.25'
+          memory: 100M
